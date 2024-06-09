@@ -1,0 +1,10 @@
+SSM - Sokol Server Manager
+
+Logs into server via ssh
+
+Usage:
+    ssm login USERNAME SERVERNAME
+
+Examples:
+  ssm login root MyServer    - finds MyServer in configuration file, validates username, get an IP and logs
+

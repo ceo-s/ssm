@@ -1,0 +1,7 @@
+SSM - Sokol Server Manager
+
+Prints list of registered servers
+
+Usage:
+    ssm list_servers
+

@@ -1,4 +1,18 @@
 SSM - Sokol Server Manager
 
-Usage: $PROJECT_NAME MODE [MODE_CPECIFIC_PARAMETERS]
+Helps with server management
+
+Usage:
+  ssm MODE [MODE_CPECIFIC_PARAMETERS]...
+
+Modes:
+  login            - Logs into server via ssh
+  list_servers     - Prints list of registered servers
+  list_users       - Print list of valid users for specific server
+  configure        - Interactively configures the project
+  --help           - See this message
+
+Examples:
+  ssm login root MyServer    - finds MyServer in configuration file, validates username, get an IP and logs
+  ssm list_users MyServer    - prints all users from the configuration file for MyServer
 

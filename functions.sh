@@ -8,7 +8,5 @@ function get_server_configuration() {
 }
 
 function show_help() {
-
-    echo "Usage: $PROJECT_NAME MODE [MODE_CPECIFIC_PARAMETERS]"
-
+    cat "help_messages/$1.txt"
 }

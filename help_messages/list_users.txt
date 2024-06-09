@@ -1,0 +1,10 @@
+SSM - Sokol Server Manager
+
+Print list of valid users for specific server
+
+Usage:
+  ssm list_users SERVERNAME
+
+Examples:
+  ssm list_users MyServer    - prints all users from the configuration file for MyServer
+

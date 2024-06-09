@@ -1,0 +1,7 @@
+SSM - Sokol Server Manager
+
+Interactively configures the project
+
+Usage:
+  ssm configure
+
