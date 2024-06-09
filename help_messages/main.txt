@@ -1,0 +1,4 @@
+SSM - Sokol Server Manager
+
+Usage: $PROJECT_NAME MODE [MODE_CPECIFIC_PARAMETERS]
+
