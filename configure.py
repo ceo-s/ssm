@@ -20,7 +20,9 @@ def main() -> None:
         print("2. Delete server")
         print("3. Change server configuration")
         print("4. Import config from existing file")
-        print("5. Save and exit")
+        print("5. Print server list")
+        print("6. Print server configuration")
+        print("7. Save and exit")
         print("228. Do not save and exit")
         option = input()
 
@@ -34,6 +36,10 @@ def main() -> None:
             case "4":
                 import_from_file()
             case "5":
+                print_server_list()
+            case "6":
+                print_server_configuration()
+            case "7":
                 res = input("Save and exit. Are you sure?[y/N]: ")
                 if res == "y":
                     return
@@ -71,6 +77,10 @@ def delete_server() -> None:
 def reconfigure() -> None:
     name = input("Enter server name: ")
 
+    if name not in config.sections():
+        print_red("This server does not exist!")
+        return
+
     temp_values = copy.deepcopy(config[name])
 
     while True:
@@ -80,7 +90,8 @@ def reconfigure() -> None:
         print("3. Add user")
         print("4. Delete user")
         print("5. Init users")
-        print("6. Save and exit to main menu")
+        print("6. Print server configuration")
+        print("7. Save and exit to main menu")
         print("228. Do not save and exit to main menu")
         option = input()
 
@@ -126,6 +137,8 @@ def reconfigure() -> None:
                     temp_values["Users"] = ",".join(set(new_userlist))
                     print_success()
             case "6":
+                print_server_configuration(name)
+            case "7":
                 decision = input("Save and exit. Are you sure?[y/N]: ")
                 if decision == "y":
                     config[name] = temp_values
@@ -175,6 +188,24 @@ def userlist_is_valid(userlist: list[str]) -> bool:
         if not username_is_valid(username):
             res = False
     return res
+
+
+def print_server_list():
+    print("\nServer list:")
+    for i, server_name in enumerate(config.sections(), 1):
+        print(f"{i}) {server_name}")
+
+
+def print_server_configuration(server_name: str = None):
+    if server_name is None:
+        server_name = input("Enter server name: ")
+
+    if server_name not in config.sections():
+        print_red("This server does not exist!")
+
+    print(f"\n[{server_name}]")
+    print(f"IP = {config[server_name]["IP"]}")
+    print(f"USERS = {config[server_name]["USERS"]}")
 
 
 def print_red(text: str) -> None:
